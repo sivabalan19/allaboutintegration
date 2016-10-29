@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="receiveArticles/Resources/receiveItemFromQueue-concrete"/>
+            <con:binding>
+                <con:name>Dequeue_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/pcbpel/adapter/aq/proj-Fusion-Osb/receiveArticles/receiveItemFromQueue</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:pipeline type="request" name="request-7f000101.4f684a8b.0.157f89b3600.N7ed0">
+            <con:stage id="_StageId-7f000101.4f684a8b.0.157f89b3600.N7ece" name="processRequest">
+                <con:context>
+                    <con1:userNsDecl prefix="shop" namespace="http://xmlns.oracle.com/xdb/SHOP_KEEPER"/>
+                </con:context>
+                <con:actions>
+                    <con2:report>
+                        <con1:id>_ActionId-7f000101.4f684a8b.0.157f89b3600.N7e69</con1:id>
+                        <con2:expr>
+                            <con1:xqueryText>$body</con1:xqueryText>
+                        </con2:expr>
+                        <con2:labels>
+                            <con2:key>itemId</con2:key>
+                            <con2:varName>body</con2:varName>
+                            <con2:value>
+                                <con1:xpathText>./shop:ITEM_TYPE/ITEM_ID</con1:xpathText>
+                            </con2:value>
+                        </con2:labels>
+                        <con2:labels>
+                            <con2:key>itemName</con2:key>
+                            <con2:varName>body</con2:varName>
+                            <con2:value>
+                                <con1:xpathText>./shop:ITEM_TYPE/ITEM_NAME</con1:xpathText>
+                            </con2:value>
+                        </con2:labels>
+                    </con2:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-7f000101.4f684a8b.0.157f89b3600.N7ecf">
+            <con:stage id="_StageId-7f000101.4f684a8b.0.157f89b3600.N7ecd" name="processResponse">
+                <con:context/>
+                <con:actions/>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="processPurchasedItem">
+                <con:request>request-7f000101.4f684a8b.0.157f89b3600.N7ed0</con:request>
+                <con:response>response-7f000101.4f684a8b.0.157f89b3600.N7ecf</con:response>
+            </con:pipeline-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

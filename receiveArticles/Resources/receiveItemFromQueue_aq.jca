@@ -1,0 +1,12 @@
+<adapter-config name="receiveItemFromQueue" adapter="aq" wsdlLocation="receiveItemFromQueue.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="localHost-shopKeeper" location="eis/AQ/newsPaper"/>
+  <endpoint-activation portType="Dequeue_ptt" operation="Dequeue">
+    <activation-spec className="oracle.tip.adapter.aq.inbound.AQDequeueActivationSpec">
+      <property name="QueueName" value="NEWS_MAGAZINE_Q"/>
+      <property name="SchemaValidation" value="false"/>
+      <property name="DatabaseSchema" value="SHOP_KEEPER"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

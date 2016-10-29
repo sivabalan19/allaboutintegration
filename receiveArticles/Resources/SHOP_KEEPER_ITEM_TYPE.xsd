@@ -1,0 +1,23 @@
+<schema targetNamespace="http://xmlns.oracle.com/xdb/SHOP_KEEPER" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SHOP_KEEPER="http://xmlns.oracle.com/xdb/SHOP_KEEPER" elementFormDefault="unqualified" attributeFormDefault="qualified">
+   <complexType name="ITEM_TYPE">
+      <sequence>
+         <element name="ITEM_ID" type="double" nillable="true" minOccurs="0"/>
+         <element name="ITEM_NAME" nillable="true" minOccurs="0">
+            <simpleType>
+               <restriction base="string">
+                  <maxLength value="30"/>
+               </restriction>
+            </simpleType>
+         </element>
+         <element name="ITEM_PUBLISHER" nillable="true" minOccurs="0">
+            <simpleType>
+               <restriction base="string">
+                  <maxLength value="30"/>
+               </restriction>
+            </simpleType>
+         </element>
+         <element name="PUBLISHED_DATE" type="string" nillable="true" minOccurs="0"/>
+      </sequence>
+   </complexType>
+   <element name="ITEM_TYPE" type="SHOP_KEEPER:ITEM_TYPE" />
+</schema>

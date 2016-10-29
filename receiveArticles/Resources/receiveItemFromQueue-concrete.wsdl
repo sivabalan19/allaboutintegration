@@ -1,0 +1,12 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/aq/proj-Fusion-Osb/receiveArticles/receiveItemFromQueue" name="receiveItemFromQueue-concrete" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:import location="receiveItemFromQueue.wsdl" namespace="http://xmlns.oracle.com/pcbpel/adapter/aq/proj-Fusion-Osb/receiveArticles/receiveItemFromQueue"/>
+    <wsdl:binding name="Dequeue_ptt-binding" type="rec:Dequeue_ptt" xmlns:rec="http://xmlns.oracle.com/pcbpel/adapter/aq/proj-Fusion-Osb/receiveArticles/receiveItemFromQueue">
+        <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+        <wsdl:operation name="Dequeue">
+            <soap:operation soapAction="Dequeue"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>
