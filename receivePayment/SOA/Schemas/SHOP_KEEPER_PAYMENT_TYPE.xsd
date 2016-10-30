@@ -1,0 +1,17 @@
+<schema targetNamespace="http://xmlns.oracle.com/xdb/SHOP_KEEPER" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SHOP_KEEPER="http://xmlns.oracle.com/xdb/SHOP_KEEPER" elementFormDefault="unqualified" attributeFormDefault="qualified">
+   <complexType name="PAYMENT_TYPE">
+      <sequence>
+         <element name="PAYMENTID" nillable="true" minOccurs="0">
+            <simpleType>
+               <restriction base="string">
+                  <maxLength value="25"/>
+               </restriction>
+            </simpleType>
+         </element>
+         <element name="AMOUNT" type="double" nillable="true" minOccurs="0"/>
+         <element name="CUSTOMERID" type="double" nillable="true" minOccurs="0"/>
+         <element name="PAYMENTDATE" type="string" nillable="true" minOccurs="0"/>
+      </sequence>
+   </complexType>
+   <element name="PAYMENT_TYPE" type="SHOP_KEEPER:PAYMENT_TYPE" />
+</schema>

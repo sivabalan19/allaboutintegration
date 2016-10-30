@@ -1,0 +1,11 @@
+<adapter-config name="enqueuePaymentAQ" adapter="aq" wsdlLocation="../WSDLs/enqueuePaymentAQ.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="localAQ" location="eis/AQ/newsPaper"/>
+  <endpoint-interaction portType="Enqueue_ptt" operation="Enqueue">
+    <interaction-spec className="oracle.tip.adapter.aq.outbound.AQEnqueueInteractionSpec">
+      <property name="QueueName" value="PAYMENT_TABLE_Q"/>
+      <property name="DatabaseSchema" value="SHOP_KEEPER"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

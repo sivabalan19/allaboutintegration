@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/proj_Fusion12c/receivePayment/receivePayment"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="process">
+		<complexType>
+			<sequence>
+				<element name="paymentId" type="string"/>
+                                <element name="amount" type="nonNegativeInteger"/>
+                                <element name="customerId" type="nonNegativeInteger"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="processResponse">
+		<complexType>
+			<sequence>
+                                <element name="resultCode" type="string"/>
+				<element name="resultMessage" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

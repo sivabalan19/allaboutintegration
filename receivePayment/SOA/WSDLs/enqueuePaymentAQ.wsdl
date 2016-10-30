@@ -1,0 +1,28 @@
+<wsdl:definitions
+     name="enqueuePaymentAQ"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/aq/proj-Fusion12c/receivePayment/enqueuePaymentAQ"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/aq/proj-Fusion12c/receivePayment/enqueuePaymentAQ"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:obj1="http://xmlns.oracle.com/xdb/SHOP_KEEPER"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="Enqueue_plt" >
+    <plt:role name="Enqueue_role" >
+      <plt:portType name="tns:Enqueue_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/xdb/SHOP_KEEPER" schemaLocation="../Schemas/SHOP_KEEPER_PAYMENT_TYPE.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="PAYMENT_TYPE_msg">
+        <wsdl:part name="PAYMENT_TYPE" element="obj1:PAYMENT_TYPE"/>
+    </wsdl:message>
+    <wsdl:portType name="Enqueue_ptt">
+        <wsdl:operation name="Enqueue">
+            <wsdl:input message="tns:PAYMENT_TYPE_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
