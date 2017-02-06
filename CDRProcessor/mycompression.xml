@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pipeline xmlns="http://www.oracle.com/adapter/pipeline">
+  <valves>
+  <valve>zipValves.Compress</valve>
+    <!-- <valve>mimetype.MimeValidationValve</valve> -->
+  </valves>
+</pipeline>

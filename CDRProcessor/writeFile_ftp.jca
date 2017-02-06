@@ -1,0 +1,15 @@
+<adapter-config name="writeFile" adapter="FTP Adapter" wsdlLocation="writeFile.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/homeFtpServer"/>
+  <endpoint-interaction portType="Put_ptt" operation="Put">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPInteractionSpec">
+      <property name="PipelineFile" value="mycompression.xml"/>
+      <property name="LogicalDirectory" value="cdrWriteLocation"/>
+      <property name="FileType" value="ascii"/>
+      <property name="Append" value="false"/>
+      <property name="FileNamingConvention" value="cdr%yyMMddHHmmssSSz%.zip"/>
+      <property name="NumberMessages" value="1"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

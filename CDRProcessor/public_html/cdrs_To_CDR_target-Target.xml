@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns1:CDR xmlns:ns1="http://TargetNamespace.com/writeFile">
+   <ns1:MSIDN>MSISDN1</ns1:MSIDN>
+   <ns1:IMSI>IMSI2</ns1:IMSI>
+   <ns1:IMEI>IMEI3</ns1:IMEI>
+   <ns1:PLAN>planName4</ns1:PLAN>
+   <ns1:CALL_TYPE>CDR_TYPE5</ns1:CALL_TYPE>
+   <ns1:CORRESP_TYPE>receiverId6</ns1:CORRESP_TYPE>
+   <ns1:CORRESP_ISDN>receiverMsisdn7</ns1:CORRESP_ISDN>
+   <ns1:DURATION>-0</ns1:DURATION>
+   <ns1:TIME>time8</ns1:TIME>
+   <ns1:DATE>date9</ns1:DATE>
+</ns1:CDR>

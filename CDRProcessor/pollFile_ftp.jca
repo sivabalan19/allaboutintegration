@@ -1,0 +1,19 @@
+<adapter-config name="pollFile" adapter="FTP Adapter" wsdlLocation="pollFile.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/homeFtpServer" UIincludeWildcard="*.csv"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="PhysicalDirectory" value="/home/files/readFiles"/>
+      <property name="Recursive" value="true"/>
+      <property name="PublishSize" value="1"/>
+      <property name="PollingFrequency" value="1"/>
+      <property name="FileType" value="ascii"/>
+      <property name="IncludeFiles" value=".*\.csv"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="PipelineFile" value="cdrValves.xml"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>
