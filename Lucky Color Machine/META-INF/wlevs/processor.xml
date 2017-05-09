@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wlevs:config xmlns:wlevs="http://www.bea.com/ns/wlevs/config/application">
+  <processor>
+    <name>WinnerFinder</name>
+    <rules>
+        <!-- Pattern should be a sequential draw of WHITE + RED + GREEN. Each should holding a lucky number. Sum of the lucky's number 
+        should be consider as a winner.. -->
+      <query id="q_rgb_pattern"><![CDATA[ 
+        select winner.winnerRollNumber as winnerRollNumber, information from inputChannel MATCH_RECOGNIZE (
+            MEASURES 
+                white.luckyNumber + red.luckyNumber + green.luckyNumber as winnerRollNumber,
+                'white: '||white.luckyNumber||' red: '|| red.luckyNumber||' green: '||green.luckyNumber as information
+            PATTERN (white red green)
+            DEFINE
+                white as luckyColor = 'WHITE',
+                red as luckyColor = 'RED',
+                green as luckyColor = 'GREEN'
+        ) as winner
+ ]]></query>
+    </rules>
+  </processor>
+</wlevs:config>

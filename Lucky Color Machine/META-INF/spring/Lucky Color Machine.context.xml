@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:wlevs="http://www.bea.com/ns/wlevs/spring"
+       xmlns:jdbc="http://www.oracle.com/ns/ocep/jdbc"
+       xmlns:hadoop="http://www.oracle.com/ns/oep/hadoop"
+       xmlns:nosqldb="http://www.oracle.com/ns/oep/nosqldb"
+       xmlns:hbase="http://www.oracle.com/ns/oep/hbase"
+       xsi:schemaLocation="
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/osgi
+  http://www.springframework.org/schema/osgi/spring-osgi.xsd
+  http://www.bea.com/ns/wlevs/spring
+  http://www.bea.com/ns/wlevs/spring/ocep-epn.xsd
+  http://www.oracle.com/ns/ocep/jdbc
+  http://www.oracle.com/ns/ocep/jdbc/ocep-jdbc.xsd
+  http://www.oracle.com/ns/oep/hadoop
+  http://www.oracle.com/ns/oep/hadoop/oep-hadoop.xsd
+  http://www.oracle.com/ns/oep/nosqldb
+  http://www.oracle.com/ns/oep/nosqldb/oep-nosqldb.xsd
+  http://www.oracle.com/ns/oep/hbase
+  http://www.oracle.com/ns/oep/hbase/oep-hbase.xsd">
+  <wlevs:event-type-repository>
+    <wlevs:event-type type-name="LuckyDrawEvent">
+      <wlevs:class>com.wordpress.allaboutintegration.event.LuckyDraw</wlevs:class>
+    </wlevs:event-type>
+    <wlevs:event-type type-name="WinnerEventType">
+      <wlevs:class>com.wordpress.allaboutintegration.event.WinnerEvent</wlevs:class>
+    </wlevs:event-type>
+  </wlevs:event-type-repository>
+  <wlevs:adapter id="JackpotMachineAdaptor" class="com.wordpress.allaboutintegration.adaptor.JackpotMachineAdaptor">
+    <wlevs:listener ref="inputChannel"/>
+  </wlevs:adapter>
+  <wlevs:channel id="inputChannel" event-type="LuckyDrawEvent">
+    <wlevs:listener ref="WinnerFinder"/>
+  </wlevs:channel>
+  <wlevs:processor id="WinnerFinder"/>
+  <wlevs:channel id="outputChannel" event-type="WinnerEventType">
+    <wlevs:listener ref="LuckyDrawSink"/>
+    <wlevs:source ref="WinnerFinder"/>
+  </wlevs:channel>
+  <wlevs:event-bean id="LuckyDrawSink" class="com.wordpress.allaboutintegration.sink.LuckyDrawSink"/>
+</beans>
