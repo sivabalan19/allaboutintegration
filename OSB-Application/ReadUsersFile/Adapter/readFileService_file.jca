@@ -9,7 +9,7 @@
       <property name="PhysicalErrorArchiveDirectory" value="C:\fileExchange\user-errored"/>
       <property name="MinimumAge" value="4"/>
       <!--<property name="PipelineFile" value="ExcelPipeline.xml"/>-->
-      <property name="PipelineValves" value="om.osb.valves.ExcelToCSV"/>
+      <property name="PipelineValves" value="com.wordpress.allaboutintegration.ExcelToCSV"/>
       <property name="Recursive" value="false"/>
       <property name="PollingFrequency" value="5"/>
       <property name="DeleteFile" value="true"/>
