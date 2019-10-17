@@ -1,0 +1,12 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EHG-OSB-Application/ReadUsersFileProj/readFileService" name="PS_ReadUsersFile-concrete" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:import location="readFileService.wsdl" namespace="http://xmlns.oracle.com/pcbpel/adapter/file/EHG-OSB-Application/ReadUsersFileProj/readFileService"/>
+    <wsdl:binding name="ReadFileOperation_ptt-binding" type="read:ReadFileOperation_ptt" xmlns:read="http://xmlns.oracle.com/pcbpel/adapter/file/EHG-OSB-Application/ReadUsersFileProj/readFileService">
+        <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+        <wsdl:operation name="ReadFileOperation">
+            <soap:operation soapAction="ReadFileOperation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

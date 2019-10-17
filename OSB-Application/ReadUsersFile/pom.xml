@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>OSB-Application</groupId>
-    <artifactId>HelloWorld</artifactId>
+    <artifactId>ReadUsersFile</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>sbar</packaging>

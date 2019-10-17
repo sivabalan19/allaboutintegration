@@ -1,0 +1,20 @@
+<adapter-config name="readFileService" adapter="file" wsdlLocation="../WSDL/readFileService.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIincludeWildcard="*.*" location="eis/FileAdapter"/>
+  <endpoint-activation portType="ReadFileOperation_ptt" operation="ReadFileOperation">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="PhysicalDirectory" value="C:\fileExchange\user"/>
+      <property name="PhysicalArchiveDirectory" value="C:\fileExchange\archieve"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="PhysicalErrorArchiveDirectory" value="C:\fileExchange\user-errored"/>
+      <property name="MinimumAge" value="4"/>
+      <!--<property name="PipelineFile" value="ExcelPipeline.xml"/>-->
+      <property name="PipelineValves" value="om.osb.valves.ExcelToCSV"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="5"/>
+      <property name="DeleteFile" value="true"/>
+      <property name="IncludeFiles" value=".*\..*"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

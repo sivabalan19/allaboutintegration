@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline xmlns="http://www.oracle.com/adapter/pipeline">
+  <valves>
+    <valve>om.osb.valves.ExcelToCSV</valve>
+  </valves>
+</pipeline>

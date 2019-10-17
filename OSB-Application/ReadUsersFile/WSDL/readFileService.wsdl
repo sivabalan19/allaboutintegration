@@ -1,0 +1,20 @@
+<wsdl:definitions name="readFileService" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EHG-OSB-Application/ReadUsersFileProj/readFileService" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/EHG-OSB-Application/ReadUsersFileProj/readFileService" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:imp1="http://www.google.com/readFileService">
+  <plt:partnerLinkType name="ReadFileOperation_plt">
+    <plt:role name="ReadFileOperation_role">
+      <plt:portType name="tns:ReadFileOperation_ptt"/>
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+        <import namespace="http://www.google.com/readFileService" schemaLocation="../schemas/users.xsd"/>
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="ReadFileOperation_msg">
+        <wsdl:part name="body" element="imp1:users"/>
+    </wsdl:message>
+    <wsdl:portType name="ReadFileOperation_ptt">
+        <wsdl:operation name="ReadFileOperation">
+            <wsdl:input message="tns:ReadFileOperation_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
